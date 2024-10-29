@@ -9,6 +9,13 @@
     {
       "src": "/api/(.*)",  
       "dest": "job_portal/wsgi.py"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1" 
     }
-  ]
+  ],
+  "hooks": {
+    "postinstall": "python manage.py collectstatic --noinput" 
+  }
 }
