@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Django dependencies
         run: |
-          cd job-posting-backend
+          cd job-posting/job-posting-backend
           pip install -r requirements.txt
           python manage.py collectstatic --noinput
           python manage.py test
@@ -40,7 +40,7 @@ jobs:
 
       - name: Install and Build React App
         run: |
-          cd job_posting_frontend
+          cd job-posting/job-posting-frontend
           npm install
           npm run build
 
