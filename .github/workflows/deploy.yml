@@ -9,8 +9,21 @@ on:
       - main
 
 jobs:
+  check-directory-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: List root directory (to confirm structure)
+        run: |
+          ls -al
+          ls -al job-posting-backend || echo "job-posting-backend not found"
+          ls -al job-posting-frontend || echo "job-posting-frontend not found"
+
   build-backend:
     runs-on: ubuntu-latest
+    needs: check-directory-structure
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -20,15 +33,16 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Django dependencies
+      - name: Install Django dependencies and Run Tests
         run: |
-          cd job-posting/job-posting-backend
+          cd $GITHUB_WORKSPACE/job-posting-backend
           pip install -r requirements.txt
           python manage.py collectstatic --noinput
           python manage.py test
 
   build-frontend:
     runs-on: ubuntu-latest
+    needs: check-directory-structure
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,7 +54,7 @@ jobs:
 
       - name: Install and Build React App
         run: |
-          cd job-posting/job-posting-frontend
+          cd $GITHUB_WORKSPACE/job-posting-frontend
           npm install
           npm run build
 
