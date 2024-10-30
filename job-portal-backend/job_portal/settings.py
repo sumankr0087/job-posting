@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-bj@wr91cg_&sw07%l%_zg9)$&a3e5oc&b6lh3a@azd^d2yb@j)
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['job-posting-psi.vercel.app']
-ALLOWED_HOSTS = ['job-posting-psi.vercel.app', 'job-posting-git-main-suman-kumars-projects-4db5456f.vercel.app', 'localhost']
+ALLOWED_HOSTS = ['job-posting-psi.vercel.app']
 
 
 
