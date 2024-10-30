@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "job-posting-backend/job_portal/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",  
+      "dest": "job-posting-backend/job_portal/wsgi.py"
+    }
+  ]
+}
